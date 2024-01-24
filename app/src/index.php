@@ -31,7 +31,9 @@ $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
     min VARCHAR(100) NOT NULL,
     exp_date VARCHAR(100),
     location VARCHAR(100),
-    category VARCHAR(100)
+    category VARCHAR(100),
+    subcategory VARCHAR(100),
+    prioritet VARCHAR(100)
     )";
 
 if ($conn->query($sql_table) === TRUE) {
@@ -67,14 +69,26 @@ if ($conn->query($sql_table) === TRUE) {
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
    //Executing the multi query
    $query = "SELECT DISTINCT location FROM stock";
- 
-   //Retrieving the records
    $res = mysqli_query($conn, $query, MYSQLI_USE_RESULT);
-   if ($res) {
-      while ($row = mysqli_fetch_row($res)) {
-        echo "<a href=\"location.php?id=".$row[0]."\" target=\"iframe_a\">".$row[0]."</a>";
-      }
-   }
+   
+  foreach($res as $row){  
+          $location=$row["location"];
+          echo "<a href=\"location.php?id=".$row["location"]."\" target=\"iframe_a\"><sub>".$row["location"]."</sub></a>";
+          $conn2 = new mysqli($db_host, $db_user, $db_password, $db_name);
+          $query2 = "SELECT DISTINCT subcategory,location FROM stock WHERE location='$location'";
+          $res2 = mysqli_query($conn2, $query2, MYSQLI_USE_RESULT);
+  
+          foreach($res2 as $row2){  
+            echo "<a href=\"subcategory.php?id=".$row2["subcategory"]."&location=".$row2["location"]."\" target=\"iframe_a\"><sub2>".$row2["subcategory"]."</sub2></a>";  
+            }
+          echo "<hr>";
+  }
+      
+        
+      
+      #echo "</ul>";
+      
+   
 
 
 

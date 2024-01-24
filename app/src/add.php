@@ -11,8 +11,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
 //Executing the multi query
-    $sql = "INSERT INTO stock (name, stock, min, exp_date, location, category)
-VALUES ('$_POST[produkt]', '$_POST[antal]', '$_POST[behov]', '$_POST[expdate]', '$_POST[finns]', '$_POST[kategori]')";
+    $sql = "INSERT INTO stock (name, stock, min, exp_date, location, category, subcategory, prioritet)
+VALUES ('$_POST[produkt]', '$_POST[antal]', '$_POST[behov]', '$_POST[expdate]', '$_POST[finns]', '$_POST[typ]', '$_POST[subkategori]', '$_POST[prioritet]')";
 
 
 if (mysqli_query($conn, $sql)) {
@@ -41,19 +41,8 @@ if (mysqli_query($conn, $sql)) {
 <td><input type="text" id="produkt" name="produkt"><br></td>
 </tr>
 <tr>
-<td><label for="fname">Kategori:</label><br></td>
-<td>
-
-
-<select name="kategori" id="kategori">
-  <option value="St" selected>St</option>
-  <option value="Par">Par</option>
-  <option value="Rullar">Rullar</option>
-  <option value="Pack">Pack</option>
-</select>
-
-
-</td>
+<td><label for="fname">Typ:</label><br></td>
+<td><input type="text" id="typ" name="typ"><br></td>
 </tr>
 <tr>
 <td><label for="lname">Antal:</label><br></td>
@@ -70,6 +59,14 @@ if (mysqli_query($conn, $sql)) {
 <tr>
 <td><label for="fname">Finns:</label><br></td>
 <td><input type="text" id="finns" name="finns"><br></td>
+</tr>
+<tr>
+<td><label for="fname">Subkategori:</label><br></td>
+<td><input type="text" id="subkategori" name="subkategori"><br></td>
+</tr>
+<tr>
+<td><label for="fname">Prioritet:</label><br></td>
+<td><input type="text" id="prioritet" name="prioritet"><br></td>
 </tr>
 <tr>
 <td></td>
