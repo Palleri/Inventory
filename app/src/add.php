@@ -11,8 +11,8 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
   }
 //Executing the multi query
-    $sql = "INSERT INTO stock (name, stock, min, exp_date, location, category, subcategory, prioritet)
-VALUES ('$_POST[produkt]', '$_POST[antal]', '$_POST[behov]', '$_POST[expdate]', '$_POST[finns]', '$_POST[typ]', '$_POST[subkategori]', '$_POST[prioritet]')";
+    $sql = "INSERT INTO stock (name, stock, min, exp_date, location, category, subcategory, prioritet, notify)
+VALUES ('$_POST[produkt]', '$_POST[antal]', '$_POST[behov]', '$_POST[expdate]', '$_POST[finns]', '$_POST[typ]', '$_POST[subkategori]', '$_POST[prioritet]', '0')";
 
 
 if (mysqli_query($conn, $sql)) {

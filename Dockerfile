@@ -5,7 +5,9 @@ host="" \
 name="" \
 user="" \
 password="" \
-port=""
+port="" \
+token="" \
+hahost=""
 COPY app* /app/ 
 RUN apk --update add --no-cache \
     lighttpd \
@@ -24,6 +26,8 @@ RUN apk --update add --no-cache \
     php-curl \
     php-cgi \
     fcgi \
+    mysql-client\
+    coreutils \
 #    php-pdo \
 #    php-pdo_pgsql \
 #    postgresql \

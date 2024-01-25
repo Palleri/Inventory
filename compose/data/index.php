@@ -33,7 +33,8 @@ $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
     location VARCHAR(100),
     category VARCHAR(100),
     subcategory VARCHAR(100),
-    prioritet VARCHAR(100)
+    prioritet VARCHAR(100),
+    notify INT(10) DEFAULT (0)
     )";
 
 if ($conn->query($sql_table) === TRUE) {

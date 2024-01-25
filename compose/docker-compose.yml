@@ -11,6 +11,8 @@ services:
       user: root
       password: rootpw
       name: inventory
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0ZDk0YWNhM2YwOTk0ODdiYWU5NzkzMGI4ZmE0Nzc5OSIsImlhdCI6MTcwNjEwODk0NSwiZXhwIjoyMDIxNDY4OTQ1fQ.G4buyHo20AkyEuZnZpDixESGBekoMH0_rOBGl3G5ssk
+      hahost: 10.0.20.10:8123
     volumes:
       - ./data:/var/www/
 
@@ -19,6 +21,7 @@ services:
   db:
     #    platform: linux/x86_64
     image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
       - ./db_data:/var/lib/mysql
     restart: always

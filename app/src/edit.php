@@ -15,6 +15,13 @@ if (isset($_GET["id"])){
     
 }
 
+if (isset($_POST)) {
+    $sql = "UPDATE stock SET notify='0' WHERE id='$id'";
+    if (mysqli_query($conn, $sql)) {
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+    }
 
 
 if (!$conn) {
