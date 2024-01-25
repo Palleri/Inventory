@@ -22,6 +22,7 @@ $query = "SELECT * FROM stock WHERE subcategory='$id' AND location='$location' O
 ?>
 <hr></hr>
 <table width="100%" border="0">
+<?php echo "<a target=blank href=\"subcategory.php?id=$id&location=$location\">Skriv ut</a>";?>
 <tbody>
 <td><h3>Namn</h3></td>
 <td><h3>Prioritet</h3></td>
