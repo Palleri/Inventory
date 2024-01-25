@@ -20,7 +20,7 @@ services:
   # Database
   db:
     #    platform: linux/x86_64
-    image: mysql:latest
+    image: mysql:8.3.0
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
       - ./db_data:/var/lib/mysql

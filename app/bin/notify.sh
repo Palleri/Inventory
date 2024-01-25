@@ -12,13 +12,9 @@ name=$(mysql -h db -u root --password=$password --database inventory -s -r -N --
 stock=$(mysql -h db -u root --password=$password --database inventory -s -r -N --execute="SELECT stock FROM stock WHERE id ='$id';")
 min=$(mysql -h db -u root --password=$password --database inventory -s -r -N --execute="SELECT min FROM stock WHERE id ='$id';")
 location=$(mysql -h db -u root --password=$password --database inventory -s -r -N --execute="SELECT location FROM stock WHERE id ='$id';")
+category=$(mysql -h db -u root --password=$password --database inventory -s -r -N --execute="SELECT category FROM stock WHERE id ='$id';")
 exp_date=$(mysql -h db -u root --password=$password --database inventory -s -r -N --execute="SELECT exp_date FROM stock WHERE id ='$id';")
 
-echo $id
-echo $stock
-echo $min
-echo $location
-echo $exp_date
 
 if [ -z "$id" ]
 then
@@ -27,7 +23,7 @@ else
 
 curl -k -X POST -H "Content-Type: application/json" \
 -H "Authorization: Bearer $token" \
-http://$hahost/api/services/shopping_list/add_item -d '{"name":"'"[BEREDSKAP] $name $stock/$min $exp_date $location"'"}'
+http://$hahost/api/services/shopping_list/add_item -d '{"name":"'"[BEREDSKAP] $name $stock/$min $category - $exp_date - $location"'"}'
 
 
 mysql -h db -u root --password=$password --database inventory -s -r -N --execute="UPDATE stock SET notify=1 WHERE id='$id';"
