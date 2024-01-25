@@ -17,7 +17,7 @@ $query = "SELECT * FROM stock ORDER BY if(prioritet = '' or prioritet is null,1,
 ?>
 <hr></hr>
 <table width="100%" border="0">
-    <a target=blank href="home.php">Skriv ut</a>
+    <a target=blank href="print.php">Skriv ut</a>
 <tbody>
 <td><h3>Namn</h3></td>
 <td><h3>Prioritet</h3></td>

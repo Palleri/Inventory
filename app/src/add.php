@@ -1,10 +1,20 @@
 <?php
 if ($_POST){
 
+if ($_POST['finns'] == ''){
+  $_POST['finns'] = "O-org";
+}
+
 $db_host=getenv('host');
 $db_name=getenv('name');
 $db_user=getenv('user');
 $db_password=getenv('password');
+
+$_POST['produkt'] = ucfirst($_POST['produkt']);
+$_POST['finns'] = ucfirst($_POST['finns']);
+$_POST['typ'] = ucfirst($_POST['typ']);
+$_POST['subkategori'] = ucfirst($_POST['subkategori']);
+
 
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
 if (!$conn) {

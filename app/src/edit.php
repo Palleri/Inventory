@@ -12,7 +12,7 @@ $db_password=getenv('password');
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
 if (isset($_GET["id"])){
     $id=$_GET["id"];
-    
+
 }
 
 if (isset($_POST)) {
@@ -51,6 +51,7 @@ if ($_POST['min']){
 
     if ($_POST['stock']){
         $stock=$_POST['stock'];
+        
         $sql = "UPDATE stock SET stock='$stock' WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
           } else {
@@ -58,17 +59,10 @@ if ($_POST['min']){
           }
         }
 
-    if ($_POST['location']){
-        $location=$_POST['location'];
-        $sql = "UPDATE stock SET location='$location' WHERE id='$id'";
-        if (mysqli_query($conn, $sql)) {   
-            } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-        }
 
+        
 if ($_POST['location']){
-    $location=$_POST['location'];
+    $location=ucfirst($_POST['location']);
     $sql = "UPDATE stock SET location='$location' WHERE id='$id'";
         if (mysqli_query($conn, $sql)) { 
         } else {
@@ -78,7 +72,7 @@ if ($_POST['location']){
 
 
             if ($_POST['name']){
-                $name=$_POST['name'];
+                $name=ucfirst($_POST['name']);
                 $sql = "UPDATE stock SET name='$name' WHERE id='$id'";
                 if (mysqli_query($conn, $sql)) {
                 } else {
@@ -104,7 +98,7 @@ if ($_POST['expdate']){
         }
 
         if ($_POST['subcategory']){
-            $subcategory=$_POST['subcategory'];
+            $subcategory=ucfirst($_POST['subcategory']);
             $sql = "UPDATE stock SET subcategory='$subcategory' WHERE id='$id'";
             if (mysqli_query($conn, $sql)) {
             } else {

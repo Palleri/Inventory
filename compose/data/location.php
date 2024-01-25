@@ -20,7 +20,7 @@ $query = "SELECT * FROM stock WHERE location='$id' ORDER BY if(prioritet = '' or
 ?>
 <hr></hr>
 <table width="100%" border="0">
-<?php echo "<a target=blank href=\"location.php?id=$id\">Skriv ut</a>";?>
+<?php echo "<a target=blank href=\"print.php?location=$id\">Skriv ut</a>";?>
 <tbody>
 <td><h3>Namn</h3></td>
 <td><h3>Prioritet</h3></td>
