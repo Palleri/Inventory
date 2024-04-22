@@ -16,6 +16,7 @@ $_POST['typ'] = ucfirst($_POST['typ']);
 $_POST['subkategori'] = ucfirst($_POST['subkategori']);
 
 
+
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());

@@ -71,6 +71,8 @@ if ($_POST['location']){
 }
 
 
+
+
             if ($_POST['name']){
                 $name=ucfirst($_POST['name']);
                 $sql = "UPDATE stock SET name='$name' WHERE id='$id'";
@@ -105,6 +107,16 @@ if ($_POST['expdate']){
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                 }      
             }
+
+            if ($_POST['category']){
+              $category=ucfirst($_POST['category']);
+              $sql = "UPDATE stock SET category='$category' WHERE id='$id'";
+              if (mysqli_query($conn, $sql)) {
+              } else {
+                  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                  }      
+              }
+  
 
     header("edit.php?id='$id'");
 
@@ -142,7 +154,7 @@ if ($res) {
     
         echo "<td class=\"color\"><input type=\"text\" id=\"name\" size=\"20\" name=\"name\" value=\"".$row["name"]."\"></td>";
         echo "<td class=\"color\"><input type=\"text\" id=\"prioritet\" size=\"5\" name=\"prioritet\" value=\"".$row["prioritet"]."\"></td>";
-        echo "<td style=\"color:$stockcolor\" class=\"color\"><strong><input type=\"text\" id=\"stock\" size=\"5\" name=\"stock\" value=\"".$row["stock"]."\"> / <input type=\"text\" id=\"min\" size=\"5\" name=\"min\" value=\"".$row["min"]."\"> ". $row["category"]."</strong></td>";
+        echo "<td style=\"color:$stockcolor\" class=\"color\"><strong><input type=\"text\" id=\"stock\" size=\"5\" name=\"stock\" value=\"".$row["stock"]."\"> / <input type=\"text\" id=\"min\" size=\"5\" name=\"min\" value=\"".$row["min"]."\"> <input type=\"text\" id=\"category\" size=\"5\" name=\"category\" value=\"".$row["category"]."\"> </td>";
         echo "<td class=\"color\"><input type=\"text\" id=\"location\" size=\"20\" name=\"location\" value=\"".$row["location"]."\"></td>";
         echo "<td class=\"color\"><input type=\"text\" id=\"subcategory\" size=\"20\" name=\"subcategory\" value=\"".$row["subcategory"]."\"></td>";
         echo "<td class=\"color\"><input type=\"text\" id=\"expdate\" size=\"20\" name=\"expdate\" value=\"".$row["exp_date"]."\"></td>";
