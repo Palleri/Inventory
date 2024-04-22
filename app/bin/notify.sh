@@ -6,7 +6,7 @@ id=$(mysql -h $host -u root --password=$password --database inventory -s -r -N -
 
 
 
-for i in $id
+for id in $id
 do
 name=$(mysql -h $host -u root --password=$password --database inventory -s -r -N --execute="SELECT name FROM stock WHERE id ='$id';")
 stock=$(mysql -h $host -u root --password=$password --database inventory -s -r -N --execute="SELECT stock FROM stock WHERE id ='$id';")
