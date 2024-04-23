@@ -17,6 +17,7 @@ RUN apk --update add --no-cache \
     openrc \
     vim \
     py-pip \
+    mariadb-connector-c-dev \
 #    inotify-tools \
     grep \
     php-common \

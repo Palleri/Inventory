@@ -49,7 +49,7 @@ if ($_POST['min']){
       }
     }
 
-    if ($_POST['stock']){
+    if ($_POST['stock'] != ""){
         $stock=$_POST['stock'];
         
         $sql = "UPDATE stock SET stock='$stock' WHERE id='$id'";
@@ -81,8 +81,22 @@ if ($_POST['location']){
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                   }      
                 }
+
+    if(isset($_POST['send'])) {
+      if (empty($_POST['expdate'])) {
+        $sql = "UPDATE stock SET exp_date=NULL WHERE id='$id'";
+        if (mysqli_query($conn, $sql)) {
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }  
+    }
+    }
+
+
 if ($_POST['expdate']){
     $expdate=$_POST['expdate'];
+   
+    
     $sql = "UPDATE stock SET exp_date='$expdate' WHERE id='$id'";
     if (mysqli_query($conn, $sql)) {
     } else {
@@ -160,7 +174,7 @@ if ($res) {
         echo "<td class=\"color\"><input type=\"text\" id=\"expdate\" size=\"20\" name=\"expdate\" value=\"".$row["exp_date"]."\"></td>";
         echo "<td><a href=edit.php?delete=$id>Ta bort</a></td>";
         echo "<tr>";
-        echo "<td><button type=\"submit\" form=\"form\" value=\"Submit\">Ändra</button></td>";
+        echo "<td><button type=\"submit\" form=\"form\" name=\"send\" value=\"Submit\">Ändra</button></td>";
         echo "</tr>";
         
          
