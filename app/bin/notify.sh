@@ -23,7 +23,7 @@ else
 
 curl -k -X POST -H "Content-Type: application/json" \
 -H "Authorization: Bearer $token" \
-http://$hahost/api/services/shopping_list/add_item -d '{"name":"'"[BEREDSKAP] $name $stock/$min $category - $exp_date - $location"'"}'
+http://$hahost/api/services/shopping_list/add_item -d '{"name":"'"[B] $name $stock/$min $category - $exp_date - $location"'"}'
 
 
 mysql -h $host -u root --password=$password --database inventory -s -r -N --execute="UPDATE stock SET notify=1 WHERE id='$id';"
