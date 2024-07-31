@@ -53,12 +53,37 @@ if ($conn->query($sql_table) === TRUE) {
 
 <html>
 <head>
+<script>
+function myFunction() {
+  var x = document.getElementById("sidenav");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    var styles = document.getElementById("styles").sheet.cssRules;
+    for (var i = 0; i < styles.length; i++) {
+      if (styles[i].selectorText === ".main") {
+        styles[i].style.marginLeft = "160px";
+        break;
+      }
+    }
+  } else {
+    x.style.display = "none";
+    var styles = document.getElementById("styles").sheet.cssRules;
+    for (var i = 0; i < styles.length; i++) {
+      if (styles[i].selectorText === ".main") {
+        styles[i].style.marginLeft = "0px";
+        break;
+      }
+    }
+  }
+}
+
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" id="styles" href="styles.css">
 </head>
 <body>
-
-<div class="sidenav">
+<div id="button" class="button"><button style="height:25px;width:50px;position:absolute;" onclick="myFunction()">Hide</button></div>
+<div id="sidenav" class="sidenav">
 
   <a href="index.php">Home</a>
   <a href="add.php" target="iframe_a">Lägg till</a>
